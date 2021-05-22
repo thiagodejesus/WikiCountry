@@ -1,0 +1,32 @@
+.paises {
+    display: flex;
+    width: 100vw;
+}
+
+.lista-paises {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pais {
+    position: relative;
+    list-style: none;
+    width: 18%;
+    margin: 15px 0;
+}
+
+.pais a {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.pais img{
+    position: relative;
+    min-width: 100%;
+    min-height: 181px;
+    max-width: 100%;
+    max-height: 181px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
