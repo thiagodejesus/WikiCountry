@@ -1,14 +1,13 @@
 .paginator {
     width: 100vw;
     height: 34px;
-    background-color: lightblue;
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.anterior, .proximo, .numeros {
+.anterior, .proximo, .numeros-buttons {
     cursor: pointer;
     background-color: white;
     margin: 0 4px;
@@ -25,12 +24,18 @@
     background-position: center;
 }
 
-.numeros {
-    width: 34px;
-    height: 34px;
+.numeros{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.numeros div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
 }
 
 .proximo {
@@ -41,6 +46,12 @@
     background-position: center;
 }
 
-.anterior:hover, .proximo:hover, .numeros:hover {
+.anterior:hover, .proximo:hover, .numeros div:hover {
     transform: scale(1.1);
+}
+
+.ativo {
+    background-color: #6D2080
+    ;
+    color: white;
 }

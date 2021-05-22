@@ -8,6 +8,7 @@ position: relative;
 display: flex;
 width: 316px;
 flex-direction: column;
+z-index: 1;
 }
 
 .select-box .options-container {
