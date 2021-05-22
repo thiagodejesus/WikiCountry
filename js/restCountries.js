@@ -129,12 +129,7 @@ async function getData(){
         update()
         controls.createListeners()
     }
-
     init()
-    /*const flag = data.forEach((item) => {
-        const {flag} = item
-        criaElemento(flag)
-    })*/
 }
 
 getData()

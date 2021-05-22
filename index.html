@@ -27,53 +27,47 @@
 
                     <div class="select-box">
                         <div class="options-container">
-                            <div class="option">
-                                <input type="radio" class="radio" id="escolha" name="category" />
-                                <label for="escolha">Escolha uma opção</label>
+                            <div class="option" id="escolha">
+                                <label>Escolha uma opção</label>
                             </div>
 
-                            <div class="option">
-                                <input type="radio" class="radio" id="regiao" name="category" />
-                                <label for="regiao">Região</label>
+                            <div class="option" id="region">
+                                <label>Região</label>
                             </div>
 
-                            <div class="option">
-                                <input type="radio" class="radio" id="capital" name="category" />
-                                <label for="capital">Capital</label>
+                            <div class="option" id="capital">
+                                <label>Capital</label>
                             </div>
 
-                            <div class="option">
-                                <input type="radio" class="radio" id="lingua" name="category" />
-                                <label for="lingua">Lingua</label>
+                            <div class="option" id="et">
+                                <label>Lingua</label>
                             </div>
 
-                            <div class="option">
-                                <input type="radio" class="radio" id="pais" name="category" />
-                                <label for="pais">País</label>
+                            <div class="option" id="name">
+                                <label>País</label>
                             </div>
 
-                            <div class="option">
-                                <input type="radio" class="radio" id="codigo-de-ligacao" name="category" />
-                                <label for="codigo-de-ligacao">Código de ligação</label>
+                            <div class="option" id="callingcode">
+                                <label>Código de ligação</label>
                             </div>
                         </div>
 
-                        <div class="selected">
+                        <div class="selected" data-selected-filtro1>
                             <p>Escolha uma opção</p>
                             <div class="arrow-down"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="filtros filtro2 hidden">
+                <div class="filtros filtro2 hidden" data-filtro2>
                     <p>Filtrar por</p>
 
                     <div class="select-box">
-                        <div class="options-container">
+                        <div class="options-container" data-filtro2-container>
                           
                         </div>
 
-                        <div class="selected">
+                        <div class="selected" data-selected-filtro2>
                             <p>Escolha uma opção</p>
                             <div class="arrow-down"></div>
                         </div>
@@ -97,6 +91,6 @@
         </div>
     </main>
 </body>
-<script src="js/select.js"></script>
-<script src="js/restCountries.js"></script>
+<script type="module" src="js/select.js"></script>
+<script type="module" src="js/restCountries.js"></script>
 </html>
