@@ -1,0 +1,46 @@
+.paginator {
+    width: 100vw;
+    height: 34px;
+    background-color: lightblue;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.anterior, .proximo, .numeros {
+    cursor: pointer;
+    background-color: white;
+    margin: 0 4px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    transition: all 0.5s;
+}
+
+.anterior {
+    width: 28px;
+    height: 28px;
+    background-image: url(../img/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.numeros {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proximo {
+    width: 28px;
+    height: 28px;
+    background-image: url(../img/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.anterior:hover, .proximo:hover, .numeros:hover {
+    transform: scale(1.1);
+}
