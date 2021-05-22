@@ -1,0 +1,40 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.container {
+    width: 70vw;
+    margin-top: 118px;
+}
+
+.pesquisa {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtrar-info {
+    font-size: 14px;
+    color: #6D2080;
+}
+
+.button-pesquisar {
+    margin-right: 10%;
+    height: 36px;
+    width: 156px;
+    color: white;
+    background-color: #6D2080;
+    border: none;
+    border-radius: 10px;
+    
+}
