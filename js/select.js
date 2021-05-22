@@ -1,28 +1,36 @@
-let selected = document.querySelector("[data-selected-filtro1]");
-const optionsContainer = document.querySelector(".options-container");
+function adicionaListenerFiltro1(){
 
-const optionsList = document.querySelectorAll(".option");
+  const selected = document.querySelector("[data-selected-filtro1]");
+  const optionsContainer = document.querySelector(".options-container");
+  const optionsList = document.querySelectorAll(".option");
 
-selected.addEventListener("click", () => {
-  optionsContainer.classList.toggle("active");
-  selected.classList.toggle("hidden")
-});
-
-optionsList.forEach(o => {
-  o.addEventListener("click", () => {
-    selected.innerHTML = `<p>${o.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
-    optionsContainer.classList.remove("active");
-    selected.classList.remove("hidden")
-    verificaDadosFiltro2(o.id)
+  selected.addEventListener("click", () => {
+    optionsContainer.classList.toggle("active");
+    selected.classList.toggle("hidden")
   });
-});
 
-let filtro2 = []
-export default async function verificaDadosFiltro2(search){
+  optionsList.forEach(o => {
+    o.addEventListener("click", () => {
+      selected.innerHTML = `<p>${o.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
+      optionsContainer.classList.remove("active");
+      selected.classList.remove("hidden")
+      verificaDadosFiltro2(o.id)
+    });
+  });
+}
+
+adicionaListenerFiltro1()
+
+
+async function verificaDadosFiltro2(search){
+  let filtro2 = []
   const response = await fetch(`https://restcountries.eu/rest/v2/all`)
   const data = await response.json()
+
   console.log(data)
+
   switch (search){
+
     case 'region':
       filtro2 = []
       data.forEach((item)=> {
@@ -72,18 +80,23 @@ export default async function verificaDadosFiltro2(search){
       })
       break
   }
+
   criaOptions(filtro2)
 }
 
 function criaOptions(lista){
-  selected = document.querySelector('[data-selected-filtro2]')
   document.querySelector('[data-filtro2]').classList.remove('hidden')
+  
+  let selected = document.querySelector('[data-selected-filtro2]')
   const filtro2Container = document.querySelector('[data-filtro2-container]')
+
   let divEscolha = document.createElement('div')
   divEscolha.classList.add('option')
   divEscolha.id = 'escolha'
+
   let labelEscolha = document.createElement('label')
   labelEscolha.innerText = 'Escolha uma opção'
+
   divEscolha.appendChild(labelEscolha)
   filtro2Container.appendChild(divEscolha)
 
@@ -91,14 +104,18 @@ function criaOptions(lista){
     filtro2Container.classList.toggle("active");
     selected.classList.toggle("hidden")
   });
+
   lista.forEach((opt) => {
     const div = document.createElement('div')
     div.classList.add('option')
     div.id = opt
+
     const label = document.createElement('label')
     label.innerText = opt
+
     div.appendChild(label)
     filtro2Container.appendChild(div)
+    
     div.addEventListener("click", () => {
       selected.innerHTML = `<p>${div.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
       filtro2Container.classList.remove("active");
