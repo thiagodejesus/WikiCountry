@@ -31,10 +31,10 @@ main {
 .button-pesquisar {
     margin-right: 10%;
     height: 36px;
-    width: 156px;
+    min-width: 156px;
     color: white;
     background-color: #6D2080;
     border: none;
     border-radius: 10px;
-    
+    cursor: pointer;
 }
