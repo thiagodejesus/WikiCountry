@@ -84,7 +84,7 @@ function criaOptions(lista, search){
         break
       case 'capital':
         opcao = opt.capital
-        opcaoPesquisa = `https://restcountries.eu/rest/v2/capital/${opcao.toLowerCase().replace(/\s/g, "")}`
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/capital/${opcao.toLowerCase()}`
         break
       case 'et':
         opcao = opt.language.name
@@ -92,7 +92,7 @@ function criaOptions(lista, search){
         break
       case 'name':
         opcao = opt.name
-        opcaoPesquisa = `https://restcountries.eu/rest/v2/name/${opcao.toLowerCase().replace(/\s/g, "")}`
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/name/${opcao.toLowerCase()}`
         break
       case 'callingcode':
         opcao = opt.callingCode

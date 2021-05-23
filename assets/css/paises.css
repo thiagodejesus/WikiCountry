@@ -4,12 +4,14 @@
 }
 
 .lista-paises {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
 .pais {
+    min-width: 18%;
     width: 18%;
     list-style: none;
     position: relative;
