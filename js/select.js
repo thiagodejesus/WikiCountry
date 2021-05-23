@@ -30,77 +30,27 @@ async function verificaDadosFiltro2(search){
 
   console.log(data)
 
-  switch (search){
+  filtro2 = []
+  data.forEach((item)=> {
+    let {name, region, capital, languages, callingCodes} = item
 
-    case 'region':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-      data.forEach((item)=> {
-        let {region} = item
+    // Pegando língua e código de ligação primários
+    let language = languages[0]
+    let callingCode = callingCodes[0]
+
+    let pais = {name, region, capital, language, callingCode}
+    filtro2.push(pais)
+  })
+
+    console.log(filtro2)
+    apagaFilhos(filtro2Container)
+    criaOptions(filtro2, search)
+
     
-        if (filtro2.indexOf(region) == -1) {
-          filtro2.push(region)
-        }
-      })
-      criaOptions(filtro2)
-      break
 
-    case 'capital':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-      data.forEach((item)=> {
-        let {capital} = item
-
-        filtro2.push(capital)
-      })
-      criaOptions(filtro2)
-      break
-
-    case 'et':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-      data.forEach((item)=> {
-        let {languages} = item
-        if (filtro2.indexOf(languages[0].name) == -1) {
-          filtro2.push(languages[0].name)
-        }
-      })
-      criaOptions(filtro2)
-      break
-    
-    case 'name':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-      data.forEach((item)=> {
-        let {name} = item
-
-        filtro2.push(name)
-      })
-      criaOptions(filtro2)
-      break
-
-    case 'callingcode':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-      data.forEach((item)=> {
-        let {callingCodes} = item
-        if (filtro2.indexOf(callingCodes[0]) == -1) {
-          filtro2.push(callingCodes[0])
-        }
-      })
-      criaOptions(filtro2)
-      break
-
-    case 'escolha':
-      filtro2 = []
-      apagaFilhos(filtro2Container)
-
-  }
-
-  
 }
 
-function criaOptions(lista){
+function criaOptions(lista, search){
   document.querySelector('[data-filtro2]').classList.remove('hidden')
   
   let selected = document.querySelector('[data-selected-filtro2]')
@@ -121,23 +71,54 @@ function criaOptions(lista){
     selected.classList.add("hidden")
   });
 
+  const adicionados = []
   lista.forEach((opt) => {
-    const div = document.createElement('div')
-    div.classList.add('option')
-    div.id = opt
+    let opcao = opt
+    let opcaoPesquisa
+    switch(search){
+      case 'region':
+        opcao = opt.region
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/region/${opcao.toLowerCase()}`
+        break
+      case 'capital':
+        opcao = opt.capital
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/capital/${opcao.toLowerCase().replace(/\s/g, "")}`
+        break
+      case 'et':
+        opcao = opt.language.name
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/lang/${opt.language.iso639_1}`
+        break
+      case 'name':
+        opcao = opt.name
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/name/${opcao.toLowerCase().replace(/\s/g, "")}`
+        break
+      case 'callingcode':
+        opcao = opt.callingCode
+        opcaoPesquisa = `https://restcountries.eu/rest/v2/callingcode/${opcao.toLowerCase()}`
+        break
+      case 'escolha':
+        opcao = ''
+        break
+    }
 
-    const label = document.createElement('label')
-    label.innerText = opt
+    if (adicionados.indexOf(opcao) == -1 && opcao != ''){
+      const div = document.createElement('div')
+      div.classList.add('option')
+      div.id = opcaoPesquisa
 
-    div.appendChild(label)
-    filtro2Container.appendChild(div)
-    
-    div.addEventListener("click", () => {
-      selected.innerHTML = `<p>${div.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
-      filtro2Container.classList.remove("active");
-      selected.classList.remove("hidden")
-    });
-    
+      const label = document.createElement('label')
+      label.innerText = opcao
+
+      div.appendChild(label)
+      filtro2Container.appendChild(div)
+      
+      div.addEventListener("click", () => {
+        selected.innerHTML = `<p>${div.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
+        filtro2Container.classList.remove("active");
+        selected.classList.remove("hidden")
+      });
+      adicionados.push(opcao)
+    }
   })
 }
 
