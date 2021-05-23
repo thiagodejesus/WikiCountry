@@ -1,3 +1,5 @@
+import getData from './restCountries.js'
+
 function adicionaListenerFiltro1(){
 
   const selected = document.querySelector("[data-selected-filtro1]");
@@ -114,7 +116,8 @@ function criaOptions(lista, search){
       
       div.addEventListener("click", () => {
         selected.innerHTML = `<p>${div.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
-        filtro2Container.classList.remove("active");
+        selected.id = opcaoPesquisa
+        filtro2Container.classList.remove("active")
         selected.classList.remove("hidden")
       });
       adicionados.push(opcao)
@@ -162,3 +165,15 @@ const filtro2 = {
 }
 
 filtro1.init() */
+
+function ConfigurarBotaoPesquisar() {
+  const botaoPesquisar = document.querySelector('[data-pesquisar-resultado]')
+  const buscaSelecionada = document.querySelector('[data-selected-filtro2]')
+  botaoPesquisar.addEventListener('click', () => {  
+    const pesquisa = buscaSelecionada.id
+    console.log('fui clicado')
+    getData(pesquisa)
+  })
+}
+
+ConfigurarBotaoPesquisar()

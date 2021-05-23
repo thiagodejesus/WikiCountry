@@ -6,8 +6,8 @@ const codigoLigacao = `https://restcountries.eu/rest/v2/callingcode/{callingcode
 const all = "https://restcountries.eu/rest/v2/all"
 const paises = document.querySelector('.lista-paises')
 
-async function getData(){
-    const response = await fetch("https://restcountries.eu/rest/v2/all")
+export default async function getData(url = "https://restcountries.eu/rest/v2/all"){
+    const response = await fetch(url)
     const data = await response.json()
 
 
