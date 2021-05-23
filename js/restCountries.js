@@ -69,7 +69,7 @@ async function getData(){
         },
         update() {
             document.querySelector('[data-lista-paises]').innerHTML = ''
-
+            
             let pagina = state.pagina - 1
             let inicio = pagina * state.porPagina
             let fim = inicio + state.porPagina
