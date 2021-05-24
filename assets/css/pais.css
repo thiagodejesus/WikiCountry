@@ -13,6 +13,8 @@ main {
 
 .flag {
     width: 400px;
+    display: flex;
+    align-items: center;
 }
 
 .flag img {
@@ -24,7 +26,8 @@ main {
     margin-left: 2%;
 }
 .info p {
-    margin: 25% 0
+    margin: 5% 0;
+    line-height: 2em;
 }
 
 .paises-vizinhos-container {

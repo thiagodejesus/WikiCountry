@@ -57,9 +57,10 @@ export default async function getData(url = "https://restcountries.eu/rest/v2/al
 
     const lista = {
         create(item){
-            const {flag} = item
+            const {name, flag} = item
             const li = document.createElement('li')
             const a = document.createElement('a')
+            a.href = `html/pais.html?name=${name.toLowerCase()}`
             const img = document.createElement('img')
             a.appendChild(img)
             li.appendChild(a)

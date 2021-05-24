@@ -13,22 +13,23 @@
 <body>
     <header class="cabecalho-padrao">
         <img class="logo-principal" src="../assets/img/logo_principal.svg" alt="Logo principal da empresa Mova">
-        <button class="button-return">
+        <a class="button-return" href="../index.html"></a>
+        <!--<button class="button-return">
             
-        </button>
+        </button>-->
     </header>
     <main>
         <section class="pais-selecionado">
             <div class="flag">
-                <img src="https://restcountries.eu/data/bra.svg" alt="">
+                <img src="" alt="" data-flag-pais-selecionado>
             </div>
             <div class="info">
-                <p class="nome">Nome: </p>
-                <p class="capital">Capital: </p>
-                <p class="regiao">Regiao: </p>
-                <p class="sub-regiao">Sub-Regiao: </p>
-                <p class="populacao">População: </p>
-                <p class="linguas">Línguas: </p>
+                <p data-pais-nome>Nome: </p>
+                <p data-pais-capital>Capital: </p>
+                <p data-pais-regiao>Regiao: </p>
+                <p data-pais-sub-regiao>Sub-Regiao: </p>
+                <p data-pais-populacao>População: </p>
+                <p data-pais-lingua>Língua: </p>
             </div>
         </section>
         <h2>Países vizinhos</h2>
@@ -55,4 +56,5 @@
         </section>
     </main>
 </body>
+<script src="../js/pais.js"></script>
 </html>
