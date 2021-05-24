@@ -68,6 +68,11 @@ function criaOptions(lista, search){
   divEscolha.appendChild(labelEscolha)
   filtro2Container.appendChild(divEscolha)
 
+  divEscolha.addEventListener('click', () => {
+    filtro2Container.classList.remove("active")
+    selected.classList.remove("hidden")
+  })
+
   selected.addEventListener("click", () => {
     filtro2Container.classList.add("active");
     selected.classList.add("hidden")
