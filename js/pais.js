@@ -1,3 +1,5 @@
+import {paginacao} from "./restCountries.js"
+
 function pegaParametroNameNoUrl(){
     const url = window.location.search
 
@@ -18,7 +20,7 @@ async function pegaInformacoesSobreOPais()
 {
     const paisSelecionado = pegaParametroNameNoUrl()
     let data = await getPais(paisSelecionado)
-    pais = data[0]
+    let pais = data[0]
     const {name, capital, region, subregion , population, languages, flag} = pais
     const language = languages[0].nativeName
     return {name:name, 
@@ -62,24 +64,8 @@ async function atualizaPaginaParaOPaisSelecionado() {
 }
 
 function criaPaisesBordas(bordas){
-    const paisesVizinhos = document.querySelector('[data-paises-vizinhos]')
-    bordas.forEach((item) => {
-        const {name, alpha3Code, borders, flag} = item
-            const li = document.createElement('li')
-            const a = document.createElement('a')
-            let url = `pais.html?code=${alpha3Code}`
-            borders.forEach((o)=>{
-                url += `;${o}`
-            })
-            a.href = url
-            const img = document.createElement('img')
-            a.appendChild(img)
-            li.appendChild(a)
-            img.src = flag
-            img.alt = `Bandeira do país: ${name}`
-            li.classList.add('pais')
-            paisesVizinhos.appendChild(li)
-    })
+    const data = bordas
+    paginacao(3, data)
 }
 
 

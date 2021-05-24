@@ -4,14 +4,16 @@ const idioma = `https://restcountries.eu/rest/v2/lang/{et}`
 const pais = `https://restcountries.eu/rest/v2/currency/{currency}`
 const codigoLigacao = `https://restcountries.eu/rest/v2/callingcode/{callingcode}`
 const all = "https://restcountries.eu/rest/v2/all"
-const paises = document.querySelector('.lista-paises')
 
-export default async function getData(url = "https://restcountries.eu/rest/v2/all"){
+async function getData(url = "https://restcountries.eu/rest/v2/all"){
     const response = await fetch(url)
     const data = await response.json()
+    return data
+    
+}
 
-
-    let porPagina = 10
+async function paginacao(itensPorPagina, data){
+    let porPagina = itensPorPagina
     const state = {
         pagina: 1,
         porPagina: porPagina,
@@ -60,7 +62,13 @@ export default async function getData(url = "https://restcountries.eu/rest/v2/al
             const {name, alpha3Code, borders, flag} = item
             const li = document.createElement('li')
             const a = document.createElement('a')
-            let url = `html/pais.html?code=${alpha3Code}`
+            let url
+            if (window.location.pathname.endsWith('index.html')){
+                url = `html/pais.html?code=${alpha3Code}`
+            } else {
+                url = `pais.html?code=${alpha3Code}`
+            }
+            
             borders.forEach((o)=>{
                 url += `;${o}`
             })
@@ -71,7 +79,7 @@ export default async function getData(url = "https://restcountries.eu/rest/v2/al
             img.src = flag
             img.alt = `Bandeira do país: ${name}`
             li.classList.add('pais')
-            paises.appendChild(li)
+            document.querySelector('[data-lista-paises]').appendChild(li)
         },
         update() {
             document.querySelector('[data-lista-paises]').innerHTML = ''
@@ -138,5 +146,8 @@ export default async function getData(url = "https://restcountries.eu/rest/v2/al
     init()
 }
 
-getData()
+if (window.location.pathname.endsWith('index.html')){
+    paginacao(10, await getData())
+}
 
+export {getData, paginacao};

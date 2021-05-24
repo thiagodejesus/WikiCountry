@@ -1,4 +1,4 @@
-import getData from './restCountries.js'
+import {getData, paginacao} from './restCountries.js'
 
 function adicionaListenerFiltro1(){
 
@@ -171,13 +171,14 @@ const filtro2 = {
 
 filtro1.init() */
 
-function ConfigurarBotaoPesquisar() {
+async function ConfigurarBotaoPesquisar() {
   const botaoPesquisar = document.querySelector('[data-pesquisar-resultado]')
   const buscaSelecionada = document.querySelector('[data-selected-filtro2]')
-  botaoPesquisar.addEventListener('click', () => {  
+  botaoPesquisar.addEventListener('click', async () => {  
     const pesquisa = buscaSelecionada.id
     console.log('fui clicado')
-    getData(pesquisa)
+    let data = await getData(pesquisa)
+    paginacao(10, data)
   })
 }
 

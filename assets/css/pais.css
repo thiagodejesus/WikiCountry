@@ -57,3 +57,19 @@ main {
 .paginator {
     margin-top: 2%;
 }
+
+@media (max-width: 800px){
+    .flag {
+        width: 100%;
+    }
+    .pais-selecionado {
+        flex-direction: column;
+    }
+    .paises-vizinhos {
+        flex-direction: column;
+    }
+    .pais {
+        width: 100%;
+        margin: 5% 0;
+    }
+}
