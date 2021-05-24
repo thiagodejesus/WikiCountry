@@ -5,8 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/paginator.css">
+    <link rel="stylesheet" href="../assets/css/pais.css">
 </head>
 <body>
-    
+    <header class="cabecalho-padrao">
+        <img class="logo-principal" src="../assets/img/logo_principal.svg" alt="Logo principal da empresa Mova">
+        <button class="button-return">
+            
+        </button>
+    </header>
+    <main>
+        <section class="pais-selecionado">
+            <div class="flag">
+                <img src="https://restcountries.eu/data/bra.svg" alt="">
+            </div>
+            <div class="info">
+                <p class="nome">Nome: </p>
+                <p class="capital">Capital: </p>
+                <p class="regiao">Regiao: </p>
+                <p class="sub-regiao">Sub-Regiao: </p>
+                <p class="populacao">População: </p>
+                <p class="linguas">Línguas: </p>
+            </div>
+        </section>
+        <h2>Países vizinhos</h2>
+        <section class="paises-vizinhos-container">
+            <ul class="paises-vizinhos">
+                <li class="pais">
+                    <a><img src="https://restcountries.eu/data/ala.svg"></a>
+                </li>
+                <li class="pais">
+                    <a href="../html/pais.html"><img src="https://restcountries.eu/data/ala.svg"></a>
+                </li>
+                <li class="pais">
+                    <a><img src="https://restcountries.eu/data/ala.svg"></a>
+                </li>
+                
+            </ul>
+            <div class="paginator">
+                <div class="anterior" data-anterior></div>
+                <div class="numeros" data-numeros>
+                    <div class="numeros-buttons">1</div>
+                </div>
+                <div class="proximo" data-proximo></div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

@@ -1,0 +1,54 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    margin: 4% auto 1%;
+}
+
+.pais-selecionado {
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.flag {
+    width: 400px;
+}
+
+.flag img {
+    width: inherit;
+    height: inherit;
+}
+
+.info {
+    margin-left: 2%;
+}
+.info p {
+    margin: 25% 0
+}
+
+.paises-vizinhos-container {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paises-vizinhos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pais {
+    width: 22%;
+    list-style-type: none;
+}
+
+.pais * {
+    width: 100%;
+}
+
+.paginator {
+    margin-top: 2%;
+}
