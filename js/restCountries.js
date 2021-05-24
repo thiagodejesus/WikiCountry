@@ -57,14 +57,19 @@ export default async function getData(url = "https://restcountries.eu/rest/v2/al
 
     const lista = {
         create(item){
-            const {name, flag} = item
+            const {name, alpha3Code, borders, flag} = item
             const li = document.createElement('li')
             const a = document.createElement('a')
-            a.href = `html/pais.html?name=${name.toLowerCase()}`
+            let url = `html/pais.html?code=${alpha3Code}`
+            borders.forEach((o)=>{
+                url += `;${o}`
+            })
+            a.href = url
             const img = document.createElement('img')
             a.appendChild(img)
             li.appendChild(a)
             img.src = flag
+            img.alt = `Bandeira do país: ${name}`
             li.classList.add('pais')
             paises.appendChild(li)
         },
