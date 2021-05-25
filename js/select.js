@@ -160,8 +160,8 @@ function atualizaRegiao(){
   const regiao = pegaParametroRegionNoUrl()
   if (regiao != null){
     document.querySelector('#region').click()
-    setTimeout(() => {document.querySelector(`[data-${regiao}]`).click()}, 500)
-    setTimeout(() => {document.querySelector(`[data-pesquisar-resultado]`).click()}, 500)
+    setTimeout(() => {document.querySelector(`[data-${regiao}]`).click()}, 250)
+    setTimeout(() => {document.querySelector(`[data-pesquisar-resultado]`).click()}, 250)
   }
 
 }

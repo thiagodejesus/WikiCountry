@@ -87,3 +87,12 @@
     opacity: 0;
     pointer-events: none;
 }
+
+@media (max-width: 1000px) {
+    .container {
+        width: 90vw;
+    }
+    .container * {
+        font-size: 20px;
+    }
+}

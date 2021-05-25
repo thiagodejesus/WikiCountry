@@ -67,7 +67,7 @@ async function atualizaPaginaParaOPaisSelecionado() {
         criaPaisesBordas(pais.border)
     } else {
         const h2 = document.createElement('h2')
-        h2.innerText = "Esse país não tem vizinhos."
+        h2.innerText = "Esse país não faz fronteira com nenhum outro pois é uma ilha."
         h2.style.margin = 'auto'
         document.querySelector('[data-lista-paises]').appendChild(h2)
     }

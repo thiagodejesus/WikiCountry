@@ -33,6 +33,17 @@
     object-fit: contain;
 }
 
+@media (max-width: 1000px) {
+    .pais {
+        width: 30vw;
+    }
+    
+    .pais img {
+        width: 30vw;
+        height: 100%;
+    }
+}
+
 @media (max-width: 500px) {
     .pais {
         width: 90%;
