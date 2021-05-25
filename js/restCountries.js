@@ -63,7 +63,7 @@ async function paginacao(itensPorPagina, data){
             const li = document.createElement('li')
             const a = document.createElement('a')
             let url
-            if (window.location.pathname.endsWith('index.html')){
+            if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')){
                 url = `html/pais.html?code=${alpha3Code}`
             } else {
                 url = `pais.html?code=${alpha3Code}`
@@ -146,7 +146,7 @@ async function paginacao(itensPorPagina, data){
     init()
 }
 
-if (!window.location.pathname.endsWith('index.html/')){
+if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')){
     paginacao(10, await getData())
 }
 

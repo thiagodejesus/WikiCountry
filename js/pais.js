@@ -12,7 +12,6 @@ async function getPais(paisSelecionado){
     const url = `https://restcountries.eu/rest/v2/alpha?codes=${paisSelecionado}`
     const response = await fetch(url)
     const data = await response.json()
-    console.log(data)
     return data
 }
 
@@ -66,6 +65,11 @@ async function atualizaPaginaParaOPaisSelecionado() {
     linguaElement.innerHTML += pais.language
     if (pais.border.length > 0){
         criaPaisesBordas(pais.border)
+    } else {
+        const h2 = document.createElement('h2')
+        h2.innerText = "Esse país não tem vizinhos."
+        h2.style.margin = 'auto'
+        document.querySelector('[data-lista-paises]').appendChild(h2)
     }
 }
 
