@@ -65,7 +65,7 @@ async function atualizaPaginaParaOPaisSelecionado() {
 
 function criaPaisesBordas(bordas){
     const data = bordas
-    paginacao(3, data)
+    paginacao(12, data)
 }
 
 
