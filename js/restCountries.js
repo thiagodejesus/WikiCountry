@@ -146,7 +146,7 @@ async function paginacao(itensPorPagina, data){
     init()
 }
 
-if (window.location.pathname.endsWith('index.html')){
+if (!window.location.pathname.endsWith('index.html/')){
     paginacao(10, await getData())
 }
 

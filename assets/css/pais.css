@@ -39,7 +39,7 @@ main {
 
 .paises-vizinhos {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -49,6 +49,7 @@ main {
     list-style-type: none;
     display: flex;
     align-items: center;
+    margin: 1% 0;
 }
 
 .pais * {
