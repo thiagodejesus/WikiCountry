@@ -1,5 +1,8 @@
 import {getData, paginacao} from './restCountries.js'
 
+// Script para configurar os filtros da página 1
+
+//Verifica se um parametro de região sendo passado no url
 function pegaParametroRegionNoUrl(){
   const url = window.location.search
 
@@ -28,9 +31,6 @@ function adicionaListenerFiltro1(){
     });
   });
 }
-
-adicionaListenerFiltro1()
-
 
 async function verificaDadosFiltro2(search){
   let filtro2 = []
@@ -154,8 +154,6 @@ async function ConfigurarBotaoPesquisar() {
   })
 }
 
-ConfigurarBotaoPesquisar()
-
 function atualizaRegiao(){
   const regiao = pegaParametroRegionNoUrl()
   if (regiao != null){
@@ -165,4 +163,11 @@ function atualizaRegiao(){
   }
 
 }
-atualizaRegiao()
+
+function init(){
+  adicionaListenerFiltro1()
+  ConfigurarBotaoPesquisar()
+  atualizaRegiao()
+}
+
+init()

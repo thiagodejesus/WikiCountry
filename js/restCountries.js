@@ -1,10 +1,4 @@
-const regiao = `https://restcountries.eu/rest/v2/region/{region}`
-const cidadeCapital = `https://restcountries.eu/rest/v2/capital/{capital}`
-const idioma = `https://restcountries.eu/rest/v2/lang/{et}`
-const pais = `https://restcountries.eu/rest/v2/currency/{currency}`
-const codigoLigacao = `https://restcountries.eu/rest/v2/callingcode/{callingcode}`
-const all = "https://restcountries.eu/rest/v2/all"
-
+// Pega todos os países da Api
 async function getData(url = "https://restcountries.eu/rest/v2/all"){
     const response = await fetch(url)
     const data = await response.json()
@@ -12,6 +6,7 @@ async function getData(url = "https://restcountries.eu/rest/v2/all"){
     
 }
 
+// Sistema de paginação e criação dos elementos nas páginas
 async function paginacao(itensPorPagina, data){
     let porPagina = itensPorPagina
     const state = {
@@ -21,6 +16,7 @@ async function paginacao(itensPorPagina, data){
         maxButtons: 5
     }
 
+    // Botões para passar de página
     const controls = {
         proxima() {
             state.pagina++
@@ -58,6 +54,8 @@ async function paginacao(itensPorPagina, data){
     }
 
     const lista = {
+
+        // Pega informações do país na lista e cria o elemento no html
         create(item){
             const {name, alpha3Code, borders, flag} = item
             const li = document.createElement('li')
@@ -81,6 +79,8 @@ async function paginacao(itensPorPagina, data){
             li.classList.add('pais')
             document.querySelector('[data-lista-paises]').appendChild(li)
         },
+
+        // Atualiza ao passar de página
         update() {
             document.querySelector('[data-lista-paises]').innerHTML = ''
             
@@ -93,6 +93,7 @@ async function paginacao(itensPorPagina, data){
         }
     }
 
+    // Cálculo e configuração dos botões a serem exibidos
     const buttons = {
         create(number){
             const button = document.createElement('div')
@@ -146,6 +147,9 @@ async function paginacao(itensPorPagina, data){
     init()
 }
 
+
+// Se certifica que o script só rodará se estiver na página index.html
+// Botei isso pois ele estava rodando na página pais quando eu importava uma função
 if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')){
     paginacao(10, await getData())
 }
