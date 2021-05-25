@@ -1,5 +1,13 @@
 import {getData, paginacao} from './restCountries.js'
 
+function pegaParametroRegionNoUrl(){
+  const url = window.location.search
+
+  const urlParametro = new URLSearchParams(url)
+  const region = urlParametro.get('region')
+  return region
+}
+
 function adicionaListenerFiltro1(){
 
   const selected = document.querySelector("[data-selected-filtro1]");
@@ -30,7 +38,6 @@ async function verificaDadosFiltro2(search){
   const response = await fetch(`https://restcountries.eu/rest/v2/all`)
   const data = await response.json()
 
-  console.log(data)
 
   filtro2 = []
   data.forEach((item)=> {
@@ -44,7 +51,6 @@ async function verificaDadosFiltro2(search){
     filtro2.push(pais)
   })
 
-    console.log(filtro2)
     apagaFilhos(filtro2Container)
     criaOptions(filtro2, search)
 
@@ -112,6 +118,10 @@ function criaOptions(lista, search){
       const div = document.createElement('div')
       div.classList.add('option')
       div.id = opcaoPesquisa
+      
+      if (opcaoPesquisa == `https://restcountries.eu/rest/v2/region/${opcao.toLowerCase()}`){
+        div.setAttribute(`data-${opcao}`,'')
+      }
 
       const label = document.createElement('label')
       label.innerText = opcao
@@ -134,52 +144,25 @@ function apagaFilhos(element){
   for (let c = element.childElementCount; c > 0; c--) {element.lastChild.remove()}
 }
 
-/* Forma alternativa a ser trabalhada
-const filtro1 = {
-  selecionado: document.querySelector("[data-selected-filtro1]"),
-  optionsContainer: document.querySelector(".options-container"),
-  optionsList: document.querySelectorAll(".option"),
-
-  adicionaListenerSelecionado(){
-    this.selecionado.addEventListener("click", () => {
-      this.optionsContainer.classList.toggle("active");
-      this.selecionado.classList.toggle("hidden")
-    })
-  },
-
-  adicionaListenerOpcoes(){
-    this.optionsList.forEach(o => {
-      o.addEventListener("click", () => {
-        this.selecionado.innerHTML = `<p>${o.querySelector("label").innerHTML}<p>` + `<div class="arrow-down"></div>`;
-        this.optionsContainer.classList.remove("active");
-        this.selecionado.classList.remove("hidden")
-        verificaDadosFiltro2(o.id)
-      });
-    });
-  },
-
-  init(){
-    this.adicionaListenerSelecionado()
-    this.adicionaListenerOpcoes()
-  }
-
-}
-
-const filtro2 = {
-
-}
-
-filtro1.init() */
-
 async function ConfigurarBotaoPesquisar() {
   const botaoPesquisar = document.querySelector('[data-pesquisar-resultado]')
   const buscaSelecionada = document.querySelector('[data-selected-filtro2]')
   botaoPesquisar.addEventListener('click', async () => {  
     const pesquisa = buscaSelecionada.id
-    console.log('fui clicado')
     let data = await getData(pesquisa)
     paginacao(10, data)
   })
 }
 
 ConfigurarBotaoPesquisar()
+
+function atualizaRegiao(){
+  const regiao = pegaParametroRegionNoUrl()
+  if (regiao != null){
+    document.querySelector('#region').click()
+    setTimeout(() => {document.querySelector(`[data-${regiao}]`).click()}, 500)
+    setTimeout(() => {document.querySelector(`[data-pesquisar-resultado]`).click()}, 500)
+  }
+
+}
+atualizaRegiao()

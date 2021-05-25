@@ -48,7 +48,7 @@ async function atualizaPaginaParaOPaisSelecionado() {
     capitalElement.innerHTML += pais.capital
 
     const regiaoElement = document.querySelector('[data-pais-regiao]')
-    regiaoElement.innerHTML += pais.region
+    regiaoElement.innerHTML += `<a href="../index.html?region=${pais.region.toLowerCase()}">${pais.region}</a>`
 
     const subRegiaoElement = document.querySelector('[data-pais-sub-regiao]')
     subRegiaoElement.innerHTML += pais.subregion
