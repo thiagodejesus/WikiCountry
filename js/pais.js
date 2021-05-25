@@ -37,6 +37,12 @@ async function pegaInformacoesSobreOPais()
 async function atualizaPaginaParaOPaisSelecionado() {
     const pais = await pegaInformacoesSobreOPais()
 
+    const title = document.querySelector('title')
+    title.innerText = pais.name
+
+    const favicon = document.querySelector('#favicon')
+    favicon.href = pais.flag
+
     const flagElement = document.querySelector('[data-flag-pais-selecionado]')
     flagElement.src = pais.flag
     flagElement.alt = `Bandeira do país: ${pais.name}`
